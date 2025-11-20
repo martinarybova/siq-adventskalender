@@ -136,7 +136,7 @@
   const expl = document.getElementById('explanation');
   const now = new Date();
 const month = now.getMonth(); // Januar = 0, Dezember = 11
-let today = 1;
+let today = 0;
 
 if (month === 11 && now.getDate() <= 24) { // Dezember, maximal Tag 24
   today = now.getDate();
@@ -214,3 +214,4 @@ if (month === 11 && now.getDate() <= 24) { // Dezember, maximal Tag 24
 </script>
 </body>
 </html>
+
