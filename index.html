@@ -10,7 +10,7 @@
     color: #222;
     text-align: center;
     padding: 2rem;
-    background: url("backdots.png") no-repeat center center fixed;
+    background: url("goldback.png") no-repeat center center fixed;
     background-size: cover;
   }
 
@@ -53,6 +53,20 @@
     user-select: none;
   }
 
+ 
+  
+}
+
+.intro {
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.intro p {
+  margin: 0.3rem 0;  
+  font-size: 1.25rem;   /* falls du es etwas größer magst */
+}
+
   .door:hover {
     transform: scale(1.05);
     box-shadow: 0 0 12px rgba(255,255,255,0.9);
@@ -65,11 +79,11 @@
   }
 
   /* Türchengrößen */
-  .wsmall { grid-column: span 2; grid-row: span 1; }
+  .wsmall { grid-column: span 2; grid-row: span 1; background: #20295e}
   .hsmall { grid-column: span 1; grid-row: span 2; background: #b84b49}
   .tiny {grid-column: span 1; grid-row: span 1; background: #820e18}
-  .long { grid-column: span 3; grid-row: span 1; font-size: 1.1em; background-color: gray}
-  .tall { grid-column: span 1; grid-row: span 3; font-size: 1.1em; background-color: #a3a3a3}
+  .long { grid-column: span 3; grid-row: span 1; font-size: 1.1em; background-color: #20295e}
+  .tall { grid-column: span 1; grid-row: span 3; font-size: 1.1em; background-color: #043607}
   .big { grid-column: span 2; grid-row: span 2; font-size: 1.2em; padding: 30px 0; background: #a11c1c; }
   .large { grid-column: span 2; grid-row: span 3; font-size: 1.5em; background: #800000; box-shadow: 0 0 20px rgba(255,255,255,0.5); transform: scale(1.05); }
 
@@ -94,11 +108,20 @@
   }
 
   .option:hover { background: #eee; }
-  .correct { background: #8bbba0 !important; }
+  .correct { background: #83bd89 !important; }
   .wrong { background: #f9b0b0 !important; }
   .explanation { margin-top: 1rem; }
   
-  
+  .explanation .author {
+  text-align: right;
+  margin-top: 0.5rem;
+  font-style: italic;
+}
+
+#question {
+  font-size: 1.2rem; /* oder 0.9rem, 14px etc. je nach Wunsch */
+  margin-bottom: 1.5rem; /* optional, Abstand nach unten */
+}
 
   /* Responsive für kleine Bildschirme */
   @media (max-width: 600px) {
@@ -112,8 +135,12 @@
 <body>
   <img src="versuchtree.png" alt="Logo" class="logo">
   <h1>/slavistIQ/-Adventskalender</h1>
+  <div class="intro">
   <p>Klicken Sie auf das heutige Türchen und testen Sie Ihr Wissen!</p>
-
+<p>Das Quiz erscheint direkt unter dem Kalender – einfach nach unten scrollen.</p>
+<p>Schummeln geht nicht! Nur die Türchen bis zum heutigen Tag lassen sich öffnen.</p>
+<p>Geduldig bleiben und jeden Tag eine kleine Überraschung genießen.</p>
+</div>
   <div class="grid" id="calendar"></div>
 
   <div id="quiz-box" style="display:none;">
@@ -124,9 +151,27 @@
 
 <script>
   const quizData = {
-    1: { question: "Wer ist der <i>Položajnik</i> in der serbischen Weihnachtstradition?", options: ["Der erste Besucher", "Der jüngste Sohn", "Der Priester", "Das älteste Familienmitglied"], correct: 0, explanation: "Der <i>Položajnik</i> ist eine wichtige Figur im serbischen Weihnachtsbrauch: Es ist die erste Person, die am Weihnachtstag das Haus betritt. Man glaubt, dass diese Person Glück, Gesundheit und Erfolg für das kommende Jahr bringt. Oft wird der <i>Položajnik</i> bewusst ausgewählt – jemand, der freundlich und lebensfroh ist. Wenn er hereinkommt, wirft er Stroh oder Weizenkörner auf den Boden und ruft: <i>Hristos se rodi!</i> (,Christus ist geboren!‘). Dafür bekommt er kleine Geschenke oder Süßigkeiten. Der Brauch erinnert daran, dass das Weihnachtsfest nicht nur religiös, sondern auch ein Fest der Gastfreundschaft und des guten Willens ist." },
-    2: { question: "Wie viele Kerzen hat ein Adventskranz?", options: ["3","4","5","6"], correct: 1, explanation: "Vier – für jeden Adventssonntag eine Kerze." },
-    3: { question: "Ursprungsland des Adventskalenders?", options: ["Frankreich","Deutschland","Finnland","Österreich"], correct: 1, explanation: "Deutschland – Tradition im 19. Jahrhundert erfunden." }
+    1: { question: "Welche Baumart wird in Serbien traditionell als Weihnachtsbaum verwendet?", options: ["Tanne (<i>Jela</i>)","Eiche (<i>Badnjak</i>)","Olivenbaum (<i>Maslina</i>)","Kiefer (<i>Bor</i>)"], correct: 1, explanation: "Die richtige Antwort ist B. Der serbische Weihnachtsbrauch unterscheidet sich stark vom westlichen Tannenbaum: Statt einer geschmückten Tanne bringt man am Heiligabend den <i>badnjak</i> ins Haus – einen Eichenzweig oder ein kleines Stück eines jungen Eichenbaums. Dieses Ritual symbolisiert Stärke, Leben und Wohlstand. Traditionell wird der <i>badnjak</i> im Morgengrauen am Badnji dan (,Heiliger Abend‘) von den Männern des Hauses gefällt, mit feierlichen Worten und in manchen Regionen mit Weihrauch und Liedern begleitet. Später am Heiligen Abend wird er im Ofen oder Kamin verbrannt, und die Funken sollen Glück bringen – je mehr, desto besser wird das kommende Jahr. Der Eichenbaum gilt im serbischen Volksglauben als heilig und steht in enger Verbindung mit alten slavischen Bräuchen, die sich mit christlichen Symbolen vermischt haben.", author: "PD"},
+	2: { question: "In vielen slavischen Regionen wird unter anderem auch zur Weihnachtszeit ein besonders geformtes Brot gebacken, zum Beispiel das ukrainische <i>калач</i> (<i>kalač</i>). Doch welche Bedeutung verbirgt sich hinter diesem traditionellen Gebäck?", options: ["Vom altslavischen <i>kalъ</i> (‚warm‘) – symbolisiert die Wärme des Hauses und der Gemeinschaft.","Vom altslavischen <i>kalati</i> (‚klingen, läuten‘) – symbolisiert das Festgeläut.","Vom altslavischen <i>koliti</i> (‚stechen, ritzen‘) – symbolisiert das Verzieren von Broten.","Vom altslavischen <i>kolo</i> (‚Rad, Kreis‘) – symbolisiert die zyklische Bewegung der Sonne und das Jahresrad."], correct: 3, explanation: "Richtige Antwort ist D. Das festliche Brot <i>kalač</i> ist eines der ältesten Symbole im slavischen Brauchtum. Seine Form verweist auf die Sonne, den Kreislauf des Jahres und die ständige Erneuerung des Lebens. Oft wird es aus geflochtenem Teig gebacken, wobei die drei Stränge für die göttliche Dreieinigkeit stehen. In der Mitte wird manchmal eine Kerze platziert, die das wiederkehrende Licht der Sonne und zugleich die Geburt Christi verkörpert. <i>Kalač</i> wird in einigen Regionen der Ukraine zu Weihnachten gebacken, sonst aber auch bei Geburten, Taufen oder Beerdigungen, womit er in vielen Lebensübergängen als symbolisches „Rad“ des Lebens verwendet wird.", author: "ML" },
+    3: { question: "Welches literarische Werk, das an Weihnachten erinnert, erbrachte dem polnischen Schriftsteller Bruno Schulz rasche Bekanntheit?", options: ["<i>Die Lebkuchengasse</i>","<i>Die Zimtläden</i>","<i>Mohnkuchen bei Nacht</i>","<i>Die Marzipanrepublik</i>"], correct: 1, explanation: "B. <i>Die Zimtläden</i>. Auch wenn der Name <i>Die Zimtläden</i> an den Duft von süßem Weihnachtsgebäck und die festliche Weihnachtszeit erinnert, verbirgt sich dahinter in Wahrheit der berühmte Erzählzyklus von Bruno Schulz. Schulz wurde 1892 in der galizischen Kleinstadt Drohobycz geboren (heute in Ukraine), und veröffentlichte mit Hilfe der polnischen Dichterin Zofia Nałkowska sein erstes Werk <i>Die Zimtläden</i> im Jahr 1933. Charakteristisch durch seine autobiografische, poetische und herausfordernde Schreibkunst erlangte Schulz einen raschen Bekanntheitsgrad in polnischen Literaturkreisen. In seinen Erzählungen spüren viele eine geheimnisvolle Tiefe, die an Franz Kafka erinnert – nicht ohne Grund wird daher Bruno Schulz oft liebevoll als der „polnische Kafka“ bezeichnet.", author: "LT" },
+	4: { 
+  question: "Wer kann am Heiligabend das Goldene Schweinchen erblicken?", 
+  options: [
+    "Alle, die viel Geld im Sparschwein haben.",
+    "Alle, die am 24.12. streng gefastet haben.",
+    "Alle, die am 24.12. die Wohnung aufgeräumt haben.",
+    "Alle, die sich in der Frühe mit kaltem Wasser gewaschen haben."
+  ], 
+  correct: 1, 
+  explanation: `
+    Das Goldene Schweinchen – auf Tschechisch <i>zlaté prasátko</i>, auf Slovakisch <i>zlaté prasiatko</i> – kann man für einen kurzen Augenblick über die Zimmerwand huschen sehen, wenn man am Heiligabend den Tag über gar nichts gegessen hat. Das hängt damit zusammen, dass der Heiligabend noch zu der adventlichen Fastenzeit gehört und man sich durch das Fasten auf den Heiligen Abend vorbereitet hat. Ganze Generationen von tschechischen und slovakischen Kindern glauben an diese Erzählung, manche sprechen sogar von einem Trauma. Wenn man nämlich als Kind den ganzen Tag nichts essen darf, um dann am Abend – vielleicht – für einen Moment das goldene Schweinchen zu erblicken, kann das für manche Kinder frustrierend sein. Und was ist eigentlich das goldene Schweinchen? Vor allem ein Aberglaube. Aber vielleicht auch ein flüchtiger Lichtmoment und die große Vorfreude darauf, dass das Christkind bald da ist.
+    <p>Recht humorvoll wurde dieser Aberglaube 2003 in der ikonischen TV-Werbung für Kofola benutzt, einer Art tschechischer Cola.</p>
+    <p><a href="https://www.youtube.com/watch?v=Fz1WjfGnASw" target="_blank">Hier können Sie diese Werbung auf YouTube ansehen</a></p>
+  `,
+  author: "RD" 
+},
+	5: { question: "<i>Koleda</i> ist ein wichtiger Bestandteil des slavischen Weihnachtsfests: Welche der folgenden Bedeutungen hat das Wort <i>koleda</i> nicht?", options: ["Ein Rundgang von Sängern, die an Häusern, vor allem in ländlichen Regionen, Lieder vortragen","Die Geschenke, die diese Sänger erhalten, wie Getreide oder Kuchen","Ein Wunsch für alles Gute und wirtschaftlichen Erfolg im neuen Jahr","Ein traditionelles Festmahl mit 12 Gängen am Weihnachtsabend"], correct: 0, explanation: "Die richtige Antwort ist A. Das Wort <i>koleda</i> stammt vom lateinischen ‚Kalendae’ ab und bedeutet so viel wie <i>die Kalenden</i>, also der erste Tag des Monats. Während es sich im slavischen Raum – etwa bei den Polen, Slowaken und Südslaven – etablierte, wird das Wort in den germanischen und romanischen Sprachen nicht verwendet. Sowohl bei den Römern als auch bei den Slaven wurde der Monats- und besonders der Jahresbeginn mit Gesang gefeiert. Daraus entwickelte sich die heutige Bedeutung von <i>koleda</i> als Bezeichnung für Weihnachtslieder. Im Tschechischen wird der Begriff vielseitiger verwendet: Er beschreibt Aspekte des Sternsingens, darunter den Rundgang, die Geschenke und die Wünsche, die Teil dieser Tradition sind.", author: "LH"},
+	16: { question: "Wer ist der <i>Položajnik</i> in der serbischen Weihnachtstradition?", options: ["Der erste Besucher am Weihnachtstag", "Der jüngste Sohn der Familie", "Der Priester der Gemeinde", "Das älteste Familienmitglied"], correct: 0, explanation: "Der <i>Položajnik</i> ist eine wichtige Figur im serbischen Weihnachtsbrauch: Es ist die erste Person, die am Weihnachtstag das Haus betritt. Man glaubt, dass diese Person Glück, Gesundheit und Erfolg für das kommende Jahr bringt. Oft wird der <i>Položajnik</i> bewusst ausgewählt – jemand, der freundlich und lebensfroh ist. Wenn er hereinkommt, wirft er Stroh oder Weizenkörner auf den Boden und ruft: <i>Hristos se rodi!</i> (,Christus ist geboren!‘). Dafür bekommt er kleine Geschenke oder Süßigkeiten. Der Brauch erinnert daran, dass das Weihnachtsfest nicht nur religiös, sondern auch ein Fest der Gastfreundschaft und des guten Willens ist.", author: "PD" },
   };
 
   const calendar = document.getElementById('calendar');
@@ -136,7 +181,7 @@
   const expl = document.getElementById('explanation');
   const now = new Date();
 const month = now.getMonth(); // Januar = 0, Dezember = 11
-let today = 0;
+let today = 5;
 
 if (month === 11 && now.getDate() <= 24) { // Dezember, maximal Tag 24
   today = now.getDate();
@@ -183,7 +228,7 @@ if (month === 11 && now.getDate() <= 24) { // Dezember, maximal Tag 24
 
   function openQuiz(day) {
     const data = quizData[day];
-    if (!data) { alert("Heute ist noch kein Quiz hinterlegt 🎄"); return; }
+    if (!data) { alert("Heute ist noch kein Quiz hinterlegt 🎁"); return; }
 
     quizBox.style.display = 'block';
     qText.innerHTML = data.question;
@@ -193,17 +238,20 @@ if (month === 11 && now.getDate() <= 24) { // Dezember, maximal Tag 24
     data.options.forEach((opt, idx) => {
   const btn = document.createElement('div');
   btn.className = 'option';
-  btn.textContent = opt;
+  btn.innerHTML = opt;
 
   btn.onclick = () => {
     if (idx === data.correct) {
       btn.classList.add('correct');
-      expl.innerHTML = "✅ " + data.explanation;
+	  expl.innerHTML = `
+      🎄 ${data.explanation}
+      ${data.author ? `<p class="author">${data.author}</p>` : ""}
+    `;
       // Optional: richtig = alle Buttons deaktivieren
       Array.from(optBox.children).forEach(o => o.onclick = null);
     } else {
       btn.classList.add('wrong');
-      expl.innerHTML = "❌ Ups! Versuche es nochmal!";
+      expl.innerHTML = "🎀 Ups! Nicht ganz, versuche es nochmal!";
       // Keine Deaktivierung → andere Buttons bleiben anklickbar
     }
   };
@@ -214,4 +262,3 @@ if (month === 11 && now.getDate() <= 24) { // Dezember, maximal Tag 24
 </script>
 </body>
 </html>
-
