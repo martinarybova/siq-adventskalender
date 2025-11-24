@@ -24,7 +24,7 @@
   }
 
   .logo {
-    width: 150px;
+    width: 250px;
     margin-bottom: 10px;
   }
 
@@ -133,13 +133,13 @@
 </style>
 </head>
 <body>
-  <img src="versuchtree.png" alt="Logo" class="logo">
+  <img src="treesiq1.svg" alt="Logo" class="logo">
   <h1>/slavistIQ/-Adventskalender</h1>
   <div class="intro">
   <p>Klicken Sie auf das heutige Türchen und testen Sie Ihr Wissen!</p>
 <p>Das Quiz erscheint direkt unter dem Kalender – einfach nach unten scrollen.</p>
 <p>Schummeln geht nicht! Nur die Türchen bis zum heutigen Tag lassen sich öffnen.</p>
-<p>Geduldig bleiben und jeden Tag eine kleine Überraschung genießen.</p>
+<p>Geduldig bleiben und jeden Tag eine kleine Überraschung genießen!</p>
 </div>
   <div class="grid" id="calendar"></div>
 
@@ -180,11 +180,11 @@
   const optBox = document.getElementById('options');
   const expl = document.getElementById('explanation');
   const now = new Date();
-const month = now.getMonth(); // Januar = 0, Dezember = 11
-let today = 5;
+const month = now.getMonth(); // Dezember = 11
+let today = 0;
 
-if (month === 11 && now.getDate() <= 24) { // Dezember, maximal Tag 24
-  today = now.getDate();
+if (month === 11) {
+  today = Math.min(now.getDate(), 24);
 }
 
   // Feste Layout-Reihenfolge für 24 Türchen (keine freie Ecke)
