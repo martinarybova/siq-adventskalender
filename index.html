@@ -28,10 +28,10 @@
     margin-bottom: 10px;
   }
 
-  /* ====== GRID MIT TÜRCHEN ====== */
+
   .grid {
     display: grid;
-    grid-template-columns: repeat(8, 80px); /* feste 8 Spalten */
+    grid-template-columns: repeat(8, 80px); 
     grid-auto-rows: 80px;
     gap: 10px;
     justify-content: center;
@@ -62,7 +62,7 @@
 
 .intro p {
   margin: 0.3rem 0;  
-  font-size: 1.25rem;   /* falls du es etwas größer magst */
+  font-size: 1.25rem;   
 }
 
   .door:hover {
@@ -76,7 +76,7 @@
     opacity: 0.8;
   }
 
-  /* Türchengrößen */
+  
   .wsmall { grid-column: span 2; grid-row: span 1; background: #20295e}
   .hsmall { grid-column: span 1; grid-row: span 2; background: #b84b49}
   .tiny {grid-column: span 1; grid-row: span 1; background: #820e18}
@@ -85,7 +85,7 @@
   .big { grid-column: span 2; grid-row: span 2; font-size: 1.2em; padding: 30px 0; background: #a11c1c; }
   .large { grid-column: span 2; grid-row: span 3; font-size: 1.5em; background: #800000; box-shadow: 0 0 20px rgba(255,255,255,0.5); transform: scale(1.05); }
 
-  /* ====== QUIZBEREICH ====== */
+  
   #quiz-box {
     background: white;
     padding: 1rem 1.5rem;
@@ -117,11 +117,11 @@
 }
 
 #question {
-  font-size: 1.2rem; /* oder 0.9rem, 14px etc. je nach Wunsch */
-  margin-bottom: 1.5rem; /* optional, Abstand nach unten */
+  font-size: 1.2rem; 
+  margin-bottom: 1.5rem; 
 }
 
-  /* Responsive für kleine Bildschirme */
+  
   @media (max-width: 600px) {
     .grid {
       grid-template-columns: repeat(5, 60px);
@@ -141,15 +141,15 @@
 
 <p style="margin-top:40px;"></p>
 
-<p>Lust auf mehr spannende Themen aus dem slavischen Raum?</p>
+<p><b>Lust auf mehr spannende Themen aus dem slavischen Raum?</b></p>
 <p>/slavistIQ/ ist bereit!</p>
-<p><p><a href="https://www.slavistik.uni-muenchen.de/slavist_iq/index.html" target="_blank">Hier finden Sie mehr Fragen & Antworten auf unserer /slavistIQ/-Webseite.</a></p>
+<p><p><a href="https://www.slavistik.uni-muenchen.de/slavist_iq/index.html" target="_blank">Hier finden Sie mehr Fragen & Antworten auf unserer <b>/slavistIQ/-Webseite</b>.</a></p>
 
 <p style="margin-top:40px;"></p>
 
-<p>Sind Sie auf Instagram?</p>
+<p><b>Sind Sie auf Instagram?</b></p>
 <p>Dann bitte unserem Account folgen und mehr erkunden!</p>
-<p><p><a href="https://www.instagram.com/slavist.iq/" target="_blank">@slavist.iq auf Instagram</a></p>
+<p><p><a href="https://www.instagram.com/slavist.iq/" target="_blank">@slavist.iq auf <b>Instagram</b></a></p>
 
 <p style="margin-top:40px;"></p>
 </div>
@@ -282,7 +282,7 @@ if (month === 11) {
   today = Math.min(now.getDate(), 24);
 }
 
-  // Feste Layout-Reihenfolge für 24 Türchen (keine freie Ecke)
+  
   const layout = [
     { day: 10, size: 'hsmall' },
 	{ day: 23, size: 'hsmall' },
@@ -342,12 +342,12 @@ if (month === 11) {
       🎄 ${data.explanation}
       ${data.author ? `<p class="author">${data.author}</p>` : ""}
     `;
-      // Optional: richtig = alle Buttons deaktivieren
+      
       Array.from(optBox.children).forEach(o => o.onclick = null);
     } else {
       btn.classList.add('wrong');
       expl.innerHTML = "🎀 Ups! Nicht ganz, versuche es nochmal!";
-      // Keine Deaktivierung → andere Buttons bleiben anklickbar
+      
     }
   };
 
